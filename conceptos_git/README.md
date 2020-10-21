@@ -75,3 +75,97 @@ Cambia el diagrama para representar el nuevo estado del repositorio: tanto el gr
 
 Marta was here4
 Jon Ander was here2
+
+---
+
+### Pregunta 1
+
+```
+| current | branch       | commit  |
+------------------------------------
+|         | master       | d10d0c9 |
+|         | idea         | 3498d0c |
+|    *    | another-idea | 3498d0c |
+
+
+[another-idea]                      [idea]                             [master]                           
+
+| commit  |      3498d0c     |      | commit  |      3498d0c     |     | commit  |      d10d0c9     |
+|  date   | 21:33 06-07-2020 |----> |  date   | 21:33 06-07-2020 |     |  date   | 21:01 06-07-2020 |
+| message | Better idea      |      | message | Better idea      |     | message | Fix bug          |
+
+                                                  |                                 |
+                                                  |                                 |
+                                                  V                                 V
+
+                                    | commit  |      1c9a23c     |     | commit  |      c87343a     |
+                                    |  date   | 21:05 06-07-2020 |     |  date   | 20:49 06-07-2020 |
+                                    | message | Crazy idea       |     | message | Add readme       |
+                                                            \               /
+                                                             \             /
+                                                              \           /
+                                                               V         V
+                                                         | commit  |      9c33a20     |
+                                                         |  date   | 20:43 06-07-2020 |
+                                                         | message | Innitial commit  |
+
+```
+
+### Pregunta 2
+
+```
+| current | branch       | commit  |
+------------------------------------
+|    *    | master       | 3498d0c |
+|         | idea         | 3498d0c |
+|         | another-idea | 3498d0c |
+
+
+
+                                                                       [master]                           
+
+                                                                       | commit  |      3498d0c     |
+                                                                       |  date   | 21:33 06-07-2020 |
+                                                                       | message | Better idea      |  
+
+                                                                                    |
+                                                                                    |
+                                                                                    V
+
+                                                                       | commit  |      1c9a23c     |  
+                                                                       |  date   | 21:05 06-07-2020 |  
+                                                                       | message | Crazy idea       |  
+
+                                                                                    |
+                                                                                    |
+[another-idea]                      [idea]                                          V
+
+| commit  |      3498d0c     |      | commit  |      3498d0c     |     | commit  |      d10d0c9     |
+|  date   | 21:33 06-07-2020 |----> |  date   | 21:33 06-07-2020 |     |  date   | 21:01 06-07-2020 |
+| message | Better idea      |      | message | Better idea      |     | message | Fix bug          |
+
+                                                  |                                 |
+                                                  |                                 |
+                                                  V                                 V
+
+                                    | commit  |      1c9a23c     |     | commit  |      c87343a     |
+                                    |  date   | 21:05 06-07-2020 |     |  date   | 20:49 06-07-2020 |
+                                    | message | Crazy idea       |     | message | Add readme       |
+                                                            \               /
+                                                             \             /
+                                                              \           /
+                                                               V         V
+                                                         | commit  |      9c33a20     |
+                                                         |  date   | 20:43 06-07-2020 |
+                                                         | message | Innitial commit  |
+```
+
+### Pregunta 3
+
+```
+| current | branch       | commit  |
+------------------------------------
+|    *    | master       | 3498d0c |
+|         | idea         | 3498d0c |
+|         | another-idea | 3498d0c |
+```
