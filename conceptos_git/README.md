@@ -52,6 +52,38 @@ git checkout another-idea
 
 Cambia el diagrama para representar el nuevo estado del repositorio: tanto el grafo de commits como la tabla de branches pueden cambiar.
 
+```
+------------------------------------
+| current | branch       | commit  |
+------------------------------------
+|         | master       | d10d0c9 |
+|         | idea         | 1c9a23c |
+|    *    | another-idea | 1c9a23c |
+------------------------------------
+
+
+
+                                   | commit  |      d10d0c9     |
+                                   |  date   | 21:01 06-07-2020 |
+                                   | message | Fix bug          |
+
+                                                |
+                                                |
+                                                V
+
+| commit  |      1c9a23c     |     | commit  |      c87343a     |
+|  date   | 21:05 06-07-2020 |     |  date   | 20:49 06-07-2020 |
+| message | Crazy idea       |     | message | Add readme       |
+                        \               /
+                         \             /
+                          \           /
+                           V         V
+                     | commit  |      9c33a20     |
+                     |  date   | 20:43 06-07-2020 |
+                     | message | Initial commit   |
+
+```
+
 #### Pregunta 2
 
 Supongamos que hemos decidido integrar los cambios de la rama `idea` a `master`, así que cambiamos de rama y ejecutamos un merge:
@@ -63,6 +95,45 @@ git merge idea
 
 Cambia el diagrama para representar el nuevo estado del repositorio: tanto el grafo de commits como la tabla de branches pueden cambiar.
 
+```
+------------------------------------
+| current | branch       | commit  |
+------------------------------------
+|    *    | master       | 80cca3c |
+|         | idea         | 1c9a23c |
+------------------------------------
+
+
+
+                              | commit  |      80cca3c     |  
+                              |  date   | 21:35 06-07-2020 |  
+                              | message | Merge idea       |  
+    
+                                /           |
+                               /            |
+                              /             |
+                             /              |
+                            /               V
+                           /       | commit  |      d10d0c9     |
+                          /         |  date   | 21:01 06-07-2020 |
+                         /          | message | Fix bug          |
+                        /
+                       /                         |
+                      /                          |
+                     V                           V
+
+| commit  |      1c9a23c     |     | commit  |      c87343a     |
+|  date   | 21:05 06-07-2020 |     |  date   | 20:49 06-07-2020 |
+| message | Crazy idea       |     | message | Add readme       |
+                        \               /
+                         \             /
+                          \           /
+                           V         V
+                     | commit  |      9c33a20     |
+                     |  date   | 20:43 06-07-2020 |
+                     | message | Initial commit   |
+```
+
 #### Pregunta 3
 
 Nos hemos bebido un par de botellas de vino y ejecutamos
@@ -73,99 +144,34 @@ git reset --hard master
 
 Cambia el diagrama para representar el nuevo estado del repositorio: tanto el grafo de commits como la tabla de branches pueden cambiar.
 
-Marta was here4
-Jon Ander was here2
-
----
-
-### Pregunta 1
-
 ```
+------------------------------------
 | current | branch       | commit  |
 ------------------------------------
 |         | master       | d10d0c9 |
-|         | idea         | 3498d0c |
-|    *    | another-idea | 3498d0c |
-
-
-[another-idea]                      [idea]                             [master]                           
-
-| commit  |      3498d0c     |      | commit  |      3498d0c     |     | commit  |      d10d0c9     |
-|  date   | 21:33 06-07-2020 |----> |  date   | 21:33 06-07-2020 |     |  date   | 21:01 06-07-2020 |
-| message | Better idea      |      | message | Better idea      |     | message | Fix bug          |
-
-                                                  |                                 |
-                                                  |                                 |
-                                                  V                                 V
-
-                                    | commit  |      1c9a23c     |     | commit  |      c87343a     |
-                                    |  date   | 21:05 06-07-2020 |     |  date   | 20:49 06-07-2020 |
-                                    | message | Crazy idea       |     | message | Add readme       |
-                                                            \               /
-                                                             \             /
-                                                              \           /
-                                                               V         V
-                                                         | commit  |      9c33a20     |
-                                                         |  date   | 20:43 06-07-2020 |
-                                                         | message | Innitial commit  |
-
-```
-
-### Pregunta 2
-
-```
-| current | branch       | commit  |
+|    *    | idea         | d10d0c9 |
 ------------------------------------
-|    *    | master       | 3498d0c |
-|         | idea         | 3498d0c |
-|         | another-idea | 3498d0c |
 
 
 
-                                                                       [master]                           
+                                   | commit  |      d10d0c9     |
+                                   |  date   | 21:01 06-07-2020 |
+                                   | message | Fix bug          |
 
-                                                                       | commit  |      3498d0c     |
-                                                                       |  date   | 21:33 06-07-2020 |
-                                                                       | message | Better idea      |  
+                                                |
+                                                |
+                                                V
 
-                                                                                    |
-                                                                                    |
-                                                                                    V
-
-                                                                       | commit  |      1c9a23c     |  
-                                                                       |  date   | 21:05 06-07-2020 |  
-                                                                       | message | Crazy idea       |  
-
-                                                                                    |
-                                                                                    |
-[another-idea]                      [idea]                                          V
-
-| commit  |      3498d0c     |      | commit  |      3498d0c     |     | commit  |      d10d0c9     |
-|  date   | 21:33 06-07-2020 |----> |  date   | 21:33 06-07-2020 |     |  date   | 21:01 06-07-2020 |
-| message | Better idea      |      | message | Better idea      |     | message | Fix bug          |
-
-                                                  |                                 |
-                                                  |                                 |
-                                                  V                                 V
-
-                                    | commit  |      1c9a23c     |     | commit  |      c87343a     |
-                                    |  date   | 21:05 06-07-2020 |     |  date   | 20:49 06-07-2020 |
-                                    | message | Crazy idea       |     | message | Add readme       |
-                                                            \               /
-                                                             \             /
-                                                              \           /
-                                                               V         V
-                                                         | commit  |      9c33a20     |
-                                                         |  date   | 20:43 06-07-2020 |
-                                                         | message | Innitial commit  |
+| commit  |      1c9a23c     |     | commit  |      c87343a     |
+|  date   | 21:05 06-07-2020 |     |  date   | 20:49 06-07-2020 |
+| message | Crazy idea       |     | message | Add readme       |
+                        \               /
+                         \             /
+                          \           /
+                           V         V
+                     | commit  |      9c33a20     |
+                     |  date   | 20:43 06-07-2020 |
+                     | message | Initial commit   |
 ```
 
-### Pregunta 3
-
-```
-| current | branch       | commit  |
-------------------------------------
-|    *    | master       | 3498d0c |
-|         | idea         | 3498d0c |
-|         | another-idea | 3498d0c |
-```
+`1c9a23c` pasa al orfanarium de los commits
