@@ -1,6 +1,7 @@
 import asyncio
-import random
 import datetime
+import math
+import random
 
 BOOTS = 0
 SECONDS = 0
@@ -18,9 +19,9 @@ async def increase_seconds():
     await asyncio.sleep(1 - OFFSET)
 
     SECONDS += (datetime.datetime.now() - INIT_TIME).total_seconds()
-    OFFSET = round(round(SECONDS, 4) - round(SECONDS, 0), 4)
+    OFFSET = SECONDS - math.floor(SECONDS)
 
-    print("Seconds: {} - Boots: {}".format(round(SECONDS, 4), BOOTS))
+    print("Seconds: %.4f - Boots: {}".format(BOOTS) % SECONDS)
 
 
 async def clock_seconds():

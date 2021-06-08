@@ -15,7 +15,7 @@ async def increase_seconds():
     await asyncio.sleep(1)
     SECONDS += (datetime.datetime.now() - INIT_TIME).total_seconds()
 
-    print("Seconds: {} - Boots: {}".format(round(SECONDS, 4), BOOTS))
+    print("Seconds: %.4f - Boots: {}".format(BOOTS) % SECONDS)
 
 
 async def clock_seconds():
